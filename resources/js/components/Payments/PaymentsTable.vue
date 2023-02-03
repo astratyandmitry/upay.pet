@@ -1,6 +1,5 @@
 <script setup>
 import {toast} from "vue3-toastify";
-import {defineProps} from 'vue';
 import axios from "axios";
 
 const props = defineProps({

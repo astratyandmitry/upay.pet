@@ -1,6 +1,5 @@
 <script setup>
 import PaymentsTable from "../Payments/PaymentsTable.vue";
-import { defineProps } from "vue";
 
 const props = defineProps({
   client: {
@@ -53,7 +52,7 @@ const props = defineProps({
 }
 
 .th {
-  @apply border-r text-right p-4 bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wider;
+  @apply border-r w-56 text-right p-4 bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wider;
 }
 
 .td {

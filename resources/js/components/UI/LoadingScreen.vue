@@ -1,6 +1,5 @@
 <script setup>
 import EmptyScreen from "./EmptyScreen.vue";
-import { defineProps } from "vue";
 
 const props = defineProps({
   loading: Boolean,
