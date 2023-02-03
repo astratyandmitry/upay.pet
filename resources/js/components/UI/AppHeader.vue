@@ -1,5 +1,14 @@
 <script setup>
-import {RouterLink} from "vue-router";
+import {RouterLink, useRouter} from "vue-router";
+import {useAuthStore} from "../../store";
+
+const router = useRouter();
+const authStore = useAuthStore();
+
+const logout = () => {
+  authStore.logout()
+    .then(() => router.push({name: "login"}))
+}
 </script>
 
 <template>
@@ -29,7 +38,7 @@ import {RouterLink} from "vue-router";
         <div class="content-right">
           <ul class="menu">
             <li class="menu-item">
-              <button class="menu-button">
+              <button class="menu-button" @click="logout">
                 Logout
               </button>
             </li>

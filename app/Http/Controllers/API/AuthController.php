@@ -15,7 +15,7 @@ class AuthController extends Controller
         /** @var \App\Models\User $user */
         $user = User::query()->where('email', $request->email)->first();
 
-        if (! $user || Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             return response()->json([
                 'message' => 'The provided credentials are incorrect.',
             ], 401);
@@ -26,16 +26,6 @@ class AuthController extends Controller
         return response()->json([
             'token' => $token,
             'token_type' => 'Bearer',
-        ]);
-    }
-
-    public function info(): JsonResponse
-    {
-        /** @var \App\Models\User $user */
-        $user = auth()->user();
-
-        return response()->json([
-            'user' => $user,
         ]);
     }
 

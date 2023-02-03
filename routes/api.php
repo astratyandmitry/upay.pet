@@ -5,8 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('App\Http\Controllers')->group(function (): void {
     Route::post('auth/login', 'API\AuthController@login')->name('auth.login');
 
-    //Route::middleware('auth:sanctum')->group(function () {
-        Route::get('auth/info', 'API\AuthController@info')->name('auth.info');
+    Route::middleware('auth:sanctum')->group(function () {
         Route::post('auth/logout', 'API\AuthController@logout')->name('auth.logout');
 
         Route::apiResource('clients', 'API\ClientsController');
@@ -16,5 +15,5 @@ Route::namespace('App\Http\Controllers')->group(function (): void {
         Route::post('payments/{id}/canceled', 'API\PaymentsController@canceled')->name('payments.canceled');
 
         Route::get('/dictionary/payment-statuses', 'API\DictionaryController@paymentStatuses')->name('dictionary.payment-statuses');
-    //});
+    });
 });
