@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property int $id
- * @property string $name
+ * @property string $label
  * @property string $key
  *
  * @property \Illuminate\Support\Carbon $created_at

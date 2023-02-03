@@ -1,17 +1,25 @@
 <script setup>
-import {ref} from "vue";
-
-const message = ref('Hello World!')
+import AppHeader from "./components/UI/AppHeader.vue";
 </script>
 
 <template>
-    <h1 class="title">
-        {{ message }}
-    </h1>
+  <div class="app">
+    <AppHeader />
+
+    <main class="main">
+      <div class="container mx-auto px-4">
+        <router-view />
+      </div>
+    </main>
+  </div>
 </template>
 
 <style lang="postcss" scoped>
-.title {
-    @apply text-center text-4xl text-gray-700;
+.app {
+  @apply w-full min-h-screen bg-gray-100 antialiased pt-[60px];
+}
+
+.main {
+  @apply py-12;
 }
 </style>

@@ -27,6 +27,8 @@ class Payment extends Model
 
     protected $fillable = ['status_id', 'amount', 'description'];
 
+    public $dates = ['created_at', 'updated_at', 'paid_at'];
+
     public function status(): BelongsTo
     {
         return $this->belongsTo(PaymentStatus::class);
@@ -34,7 +36,7 @@ class Payment extends Model
 
     public function client(): BelongsTo
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class)->withTrashed();
     }
 
     public function pay(): void

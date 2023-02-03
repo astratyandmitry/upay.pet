@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('full_name', 120);
             $table->string('phone', 20)->unique()->index();
             $table->string('email', 80)->unique()->index();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

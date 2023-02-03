@@ -2,38 +2,19 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\API\PaymentRequest;
-use App\Http\Resources\API\PaymentResource;
 use App\Models\Payment;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\API\PaymentResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Illuminate\Http\Response;
 
 class PaymentsController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {
-        $payments = Payment::query()->with(['client', 'status'])->get();
+        $payments = Payment::query()->with(['client', 'status'])->latest()->get();
 
         return PaymentResource::collection($payments);
-    }
-
-    public function store(PaymentRequest $request): PaymentResource
-    {
-        $payment = Payment::query()->create(
-            $request->validated()
-        );
-
-        return new PaymentResource($payment);
-    }
-
-    public function show(int $id): PaymentResource
-    {
-        $payment = Payment::query()->with(['client', 'status'])->findOrFail($id);
-
-        return new PaymentResource($payment);
     }
 
     public function paid(int $id): JsonResponse

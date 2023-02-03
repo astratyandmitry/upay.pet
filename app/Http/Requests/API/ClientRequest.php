@@ -15,16 +15,18 @@ class ClientRequest extends FormRequest
     {
         $rules = [
             'full_name' => 'required|max:120',
-            'email' => ['required|email'],
-            'phone' => 'required|max:20'
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'max:20'],
         ];
 
         if ($this->getMethod() === 'POST') {
             $rules['email'][] = 'unique:clients,email';
+            $rules['phone'][] = 'unique:clients,phone';
         }
 
         if ($this->getMethod() === 'PUT') {
-            $rules['email'][] = 'unique:clients,email,' . $this->route('client')->id;
+            $rules['email'][] = 'unique:clients,email,' . $this->route('client');
+            $rules['phone'][] = 'unique:clients,phone,' . $this->route('client');
         }
 
         return $rules;

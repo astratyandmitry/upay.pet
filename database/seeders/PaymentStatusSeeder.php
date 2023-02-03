@@ -10,17 +10,17 @@ class PaymentStatusSeeder extends Seeder
     protected array $data = [
         [
             'id' => PAYMENT_STATUS_PENDING,
-            'label' => 'Ожидает оплаты',
+            'label' => 'Pending',
             'key' => 'pending',
         ],
         [
             'id' => PAYMENT_STATUS_PAID,
-            'label' => 'Оплачен',
+            'label' => 'Paid',
             'key' => 'paid',
         ],
         [
             'id' => PAYMENT_STATUS_CANCELED,
-            'label' => 'Отменен',
+            'label' => 'Canceled',
             'key' => 'canceled',
         ],
     ];

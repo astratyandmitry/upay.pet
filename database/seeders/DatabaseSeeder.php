@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Client::factory()->count(20)
-            ->has(Payment::factory()->count(10))
+            ->has(Payment::factory()->count(3))
             ->create();
     }
 }
